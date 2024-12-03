@@ -6,7 +6,7 @@ abstract class FireStoreConsumer {
     String? uid,
   );
 
-  setData(Map<String, dynamic> data, {String? title});
+  setData(Map<String, dynamic> data, String title);
 
   updatData(
     String collectionName,
@@ -20,5 +20,5 @@ abstract class FireStoreConsumer {
   Future<String> getDocId();
   Future<String> addUidItem();
   Future<List<QueryDocumentSnapshot>> getProductsByUid();
-  getProductByUidIdAndTitle(String title);
+  getProductByUidIdAndTitle(String title, String uid);
 }

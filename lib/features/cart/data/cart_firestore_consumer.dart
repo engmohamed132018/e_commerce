@@ -18,14 +18,14 @@ class CartFireStoreConsumer extends FireStoreConsumer {
 
   @override
   // ignore: avoid_renaming_method_parameters
-  setData(Map<String, dynamic> data, {String? title}) async {
+  setData(Map<String, dynamic> data, String title) async {
     //! get document  id
     final responseCheck = await getDocId();
 
     if (responseCheck.isEmpty) {
       //!add uid if null
-
       final uid = await addUidItem();
+
       //! add product after  add uid field
       await _fireStore
           .collection(AppString.cartCollection)
@@ -34,7 +34,7 @@ class CartFireStoreConsumer extends FireStoreConsumer {
           .add(data);
     } else {
       //! if uid is not empty
-      final product = await getProductByUidIdAndTitle(title!);
+      final product = await getProductByUidIdAndTitle(title, responseCheck);
       if (product.isEmpty) {
         await _fireStore
             .collection(AppString.cartCollection)
@@ -54,17 +54,24 @@ class CartFireStoreConsumer extends FireStoreConsumer {
       String collectionName, String uid, String? title, String incress) async {
     try {
       final id = await _fireStore
-          .collection(collectionName)
+          .collection(AppString.cartCollection)
           .doc(uid)
           .collection(AppString.cartproductNameCollection)
-          .where(AppString.productTitle, isEqualTo: title)
           .get();
+      final targetId = id.docs
+          .firstWhere(
+            (element) =>
+                element.data()[AppString.productFieldName]
+                    [AppString.productTitle] ==
+                title,
+          )
+          .id;
 
       DocumentReference documentReference = await _fireStore
           .collection(collectionName)
           .doc(uid)
           .collection(AppString.cartproductNameCollection)
-          .doc(id.docs.first.id);
+          .doc(targetId);
       FirebaseFirestore.instance.runTransaction(
         (transaction) async {
           DocumentSnapshot data = await transaction.get(documentReference);
@@ -83,9 +90,7 @@ class CartFireStoreConsumer extends FireStoreConsumer {
           }
         },
       );
-    } catch (e) {
-      print(e.toString());
-    }
+    } catch (e) {}
   }
 
   @override
@@ -118,19 +123,34 @@ class CartFireStoreConsumer extends FireStoreConsumer {
           .get();
       return response.docs.first.id;
     } catch (e) {
-      throw Exception(e);
+      return "";
     }
   }
 
   @override
-  Future<Map<String, dynamic>> getProductByUidIdAndTitle(String title) async {
-    final response = await _fireStore
-        .collection(AppString.cartCollection)
-        .doc(await getDocId())
-        .collection(AppString.cartproductNameCollection)
-        .where(AppString.productTitle, isEqualTo: title)
-        .get();
-    return response.docs.first.data();
+  Future<Map<String, dynamic>> getProductByUidIdAndTitle(
+      String title, String uid) async {
+    Map<String, dynamic> result = {};
+    try {
+      final response = await _fireStore
+          .collection(AppString.cartCollection)
+          .doc(uid)
+          .collection(AppString.cartproductNameCollection)
+          .get();
+
+      for (var element in response.docs) {
+        final res =
+            element.data()[AppString.productfieldName][AppString.productTitle];
+        if (res == title) {
+          result = element.data();
+          return result;
+        }
+      }
+
+      return result;
+    } catch (e) {
+      return {};
+    }
   }
 
   @override

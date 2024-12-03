@@ -50,13 +50,14 @@ class AppString {
   static const totalWord = 'Total';
   static const checkoutWord = 'CHECKOUT';
   static const uid = 'uid';
-  static const productTitle = 'titel';
+  static const productTitle = 'title';
   static const cartCollection = 'Cart';
   static const productFieldName = 'product';
   static const cartproductNameCollection = 'products';
   static const count = 'count';
   static const increes = 'increes';
   static const decress = 'decress';
+  static const productfieldName = 'product';
 
   //! const firebase  keys
   static const token = 'token';

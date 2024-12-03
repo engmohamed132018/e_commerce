@@ -1,4 +1,3 @@
-import 'package:e_commerce/core/cache/cache_helper.dart';
 import 'package:e_commerce/features/cart/cubit/cart_cubit.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -7,7 +6,6 @@ import '../../../../../core/constant/app_color.dart';
 import '../../../../../core/constant/app_size.dart';
 import '../../../../../core/constant/app_string.dart';
 import '../../../../../core/constant/app_style.dart';
-import '../../../../../core/functions/public_functions.dart';
 import '../../../../../core/widgets/custom_button.dart';
 import '../../../../Auth/presentation/auth_widgets/custom_text.dart';
 import '../../../home_data/home_data_model/product_model.dart';
@@ -65,7 +63,8 @@ class AddButton extends StatelessWidget {
                 AppString.productFieldName: product.toJson(),
                 AppString.count: 1
               };
-              BlocProvider.of<CartCubit>(context).setCartIteem(data);
+              BlocProvider.of<CartCubit>(context)
+                  .setCartIteem(data, product.title);
             }));
   }
 }

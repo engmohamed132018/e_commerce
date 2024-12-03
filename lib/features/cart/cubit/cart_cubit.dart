@@ -8,8 +8,7 @@ class CartCubit extends Cubit<CartState> {
   CartCubit() : super(CartInitial());
   CartFireStoreConsumer cartConsumer = CartFireStoreConsumer();
 
-  setCartIteem(Map<String, dynamic> data) {
-    cartConsumer.setData(data,
-        title: data[AppString.productFieldName][AppString.productTitle]);
+  setCartIteem(Map<String, dynamic> data, String title) {
+    cartConsumer.setData(data, title);
   }
 }
