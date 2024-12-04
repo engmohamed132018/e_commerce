@@ -16,7 +16,6 @@ waitingTime(context) {
     } else {
       Navigator.pushReplacementNamed(context, AppString.signInScreenRoute);
     }
-    // Navigator.pushReplacementNamed(context, 'test');
   });
 }
 

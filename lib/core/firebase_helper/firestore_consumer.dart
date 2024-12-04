@@ -1,10 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 
 abstract class FireStoreConsumer {
-  Future<dynamic> getData(
-    String collectionName,
-    String? uid,
-  );
+  Future<dynamic> getData();
 
   setData(Map<String, dynamic> data, String title);
 

@@ -68,7 +68,11 @@ class AppRoute {
         }
       //! cart screen route
       case AppString.cartScreenRoute:
-        return MaterialPageRoute(builder: (_) => const CartScreen());
+        return MaterialPageRoute(
+            builder: (_) => BlocProvider(
+                  create: (context) => CartCubit(),
+                  child: const CartScreen(),
+                ));
       //! default route
       default:
         return MaterialPageRoute(builder: (_) => const SplashScreen());

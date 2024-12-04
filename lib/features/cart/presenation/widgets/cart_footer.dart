@@ -1,3 +1,4 @@
+import 'package:e_commerce/features/cart/cubit/cart_cubit.dart';
 import 'package:flutter/material.dart';
 
 import '../../../../core/constant/app_color.dart';
@@ -45,7 +46,7 @@ class cartcheckoutFooterAndText extends StatelessWidget {
             text: AppString.totalWord,
             textStyle: AppStyle.normaLAND12SizeStyle),
         CustomText(
-            text: AppString.price,
+            text: AppString.price.toString(),
             textStyle: AppStyle.boldAND18SizeStyle
                 .copyWith(color: AppColor.greenColor)),
       ],

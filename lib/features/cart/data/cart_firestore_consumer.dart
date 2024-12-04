@@ -11,7 +11,7 @@ class CartFireStoreConsumer extends FireStoreConsumer {
   deleteData(String collectionName, String uid, String title) {}
   //!getalldata
   @override
-  Future<dynamic> getData(String collectionName, String? uid) async {
+  Future<List<QueryDocumentSnapshot>> getData() async {
     return await getProductsByUid();
   }
   //!set All Data

@@ -65,6 +65,10 @@ class AddButton extends StatelessWidget {
               };
               BlocProvider.of<CartCubit>(context)
                   .setCartIteem(data, product.title);
+              ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+                  content: CustomText(
+                      text: 'add to cart is done',
+                      textStyle: AppStyle.boldAND18SizeStyle)));
             }));
   }
 }
