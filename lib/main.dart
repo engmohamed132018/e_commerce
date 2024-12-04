@@ -7,7 +7,6 @@ import 'package:firebase_core/firebase_core.dart';
 import 'core/functions/public_functions.dart';
 import 'firebase_options.dart';
 import 'generated/l10n.dart';
-import 'test_product.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
