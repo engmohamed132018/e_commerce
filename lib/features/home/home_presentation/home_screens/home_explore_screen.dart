@@ -1,4 +1,6 @@
+import 'package:e_commerce/features/home/home_bloc/cubit/home_cubit.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../../../core/constant/app_string.dart';
 import '../../../../core/constant/app_style.dart';
@@ -18,7 +20,9 @@ class HomeExploreScreen extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           customSizedBOxFromHeight(65),
-          const HomeSreachTextField(),
+          HomeSreachTextField(
+            products: BlocProvider.of<HomeCubit>(context).products,
+          ),
           customSizedBOxFromHeight(44),
           CustomText(
               text: AppString.categories,

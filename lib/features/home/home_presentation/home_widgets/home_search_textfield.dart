@@ -1,3 +1,4 @@
+import 'package:e_commerce/features/home/home_data/home_data_model/product_model.dart';
 import 'package:flutter/material.dart';
 
 import '../../../../core/constant/app_color.dart';
@@ -7,7 +8,9 @@ import 'home_function.dart';
 class HomeSreachTextField extends StatelessWidget {
   const HomeSreachTextField({
     super.key,
+    required this.products,
   });
+  final List<Product> products;
 
   @override
   Widget build(BuildContext context) {

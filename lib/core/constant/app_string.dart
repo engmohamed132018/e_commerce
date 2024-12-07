@@ -4,7 +4,7 @@ class AppString {
   static const facebook = 'assets/images/facebook.png';
   static const google = 'assets/images/google.png';
   static const exploreImge = 'assets/images/Explore.png';
-  static const cartImage = 'assets/images/Icon_Cart.png';
+  static const cartImage = 'assets/images/logoName.png';
   static const userimage = 'assets/images/Icon_User.png';
   static const onboarding = 'assets/images/onboarding.png';
   //!category test
@@ -58,6 +58,7 @@ class AppString {
   static const increes = 'increes';
   static const decress = 'decress';
   static const productfieldName = 'product';
+  static const String logoName = 'assets/images/logoName.png';
 
   //! const firebase  keys
   static const token = 'token';

@@ -1,9 +1,8 @@
-import 'dart:math';
-
 import 'package:e_commerce/core/constant/app_style.dart';
 import 'package:e_commerce/core/functions/public_functions.dart';
 import 'package:flutter/material.dart';
 
+// ignore: must_be_immutable
 class ImpolicitAnimationWidgets extends StatelessWidget {
   ImpolicitAnimationWidgets({super.key});
   ValueNotifier<double> valueNotifier = ValueNotifier(100);

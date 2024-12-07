@@ -22,12 +22,6 @@ class CustomTextformField extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.start,
         mainAxisSize: MainAxisSize.min,
         children: [
-          CustomText(
-            text: text,
-            textStyle: AppStyle.normaLAND14SizeStyle
-                .copyWith(color: AppColor.greyColor),
-          ),
-          SizedBox(height: Appsize.setHeight(height: 12)),
           TextFormField(
             controller: controller,
             validator: (value) {
@@ -37,12 +31,23 @@ class CustomTextformField extends StatelessWidget {
                 return null;
               }
             },
+            // CustomText(
+            //       text: text,
+            //       textStyle: AppStyle.normaLAND14SizeStyle
+            //           .copyWith(color: AppColor.greyColor),
+            //     ),
             // onSaved: onsaved,
             decoration: InputDecoration(
-                focusedBorder: const UnderlineInputBorder(
-                    borderSide: BorderSide(color: AppColor.greenColor)),
-                border: const UnderlineInputBorder(),
-                hintText: hint),
+              labelText: text,
+              labelStyle: AppStyle.normaLAND14SizeStyle
+                  .copyWith(color: AppColor.greyColor),
+              focusedBorder: const UnderlineInputBorder(
+                  borderSide: BorderSide(color: AppColor.greenColor)),
+              border: const UnderlineInputBorder(),
+              hintText: hint,
+              hintStyle: AppStyle.normaLAND14SizeStyle
+                  .copyWith(color: AppColor.greyColor),
+            ),
           ),
         ],
       ),

@@ -1,4 +1,3 @@
-import 'package:e_commerce/features/cart/cubit/cart_cubit.dart';
 import 'package:flutter/material.dart';
 
 import '../../../../core/constant/app_color.dart';

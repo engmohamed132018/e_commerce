@@ -1,12 +1,10 @@
-import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:e_commerce/core/cache/cache_helper.dart';
 import 'package:e_commerce/core/constant/app_color.dart';
-import 'package:e_commerce/core/constant/app_size.dart';
-import 'package:e_commerce/core/constant/app_string.dart';
+import 'package:e_commerce/core/widgets/custom_button.dart';
 import 'package:e_commerce/features/cart/presenation/screens/cartscreen.dart';
 import 'package:e_commerce/features/home/home_bloc/cubit/home_state.dart';
 import 'package:e_commerce/features/home/home_presentation/home_screens/home_explore_screen.dart';
 import 'package:e_commerce/features/home/home_presentation/home_widgets/home_nav_bar.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -20,10 +18,16 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
-  List<Widget> dataScreens = const [
-    HomeExploreScreen(),
-    CartScreen(),
-    Text('dvhhdjd'),
+  List<Widget> dataScreens = [
+    const HomeExploreScreen(),
+    const CartScreen(),
+    Center(
+      child: CustomButton(
+          text: 'sign OUT',
+          onpressed: () {
+            FirebaseAuth.instance.signOut();
+          }),
+    ),
   ];
 
   @override

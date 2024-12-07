@@ -5,6 +5,7 @@ import 'package:e_commerce/features/Auth/presentation/auth_widgets/custom_singnu
 import 'package:flutter/material.dart';
 
 import '../../../../core/constant/app_size.dart';
+import '../../../../core/widgets/logo_widget.dart';
 import '../auth_widgets/container_background.dart';
 
 class SignUpScreen extends StatelessWidget {
@@ -19,7 +20,11 @@ class SignUpScreen extends StatelessWidget {
         child: Column(
           children: [
             SizedBox(
-              height: Appsize.setHeight(height: 160),
+              height: Appsize.setHeight(height: 120),
+            ),
+            LogoWidget(),
+            SizedBox(
+              height: Appsize.setHeight(height: 40),
             ),
             ContainerOfSignScreens(
               child: buildwidget(),

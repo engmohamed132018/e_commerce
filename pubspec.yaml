@@ -44,9 +44,19 @@ dependencies:
   shared_preferences: ^2.3.3
 
 dev_dependencies:
-  flutter_lints: ^4.0.0
-  flutter_test:
-    sdk: flutter
+  flutter_launcher_icons: "^0.14.2"
+
+flutter_launcher_icons:
+  android: "launcher_icon"
+  image_path_android: "assets/images/logoName.png"
+  image_path: "assets/images/logoName.png"
+  min_sdk_android: 21 # android min sdk min:16, default 21
+  web:
+    generate: true
+    image_path: "assets/images/logoName.png"
+    background_color: "#hexcode"
+    theme_color: "#hexcode"
+ 
 
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec
@@ -83,6 +93,10 @@ flutter:
           weight: 500
         - asset: assets\fonts\Roboto-ThinItalic.ttf
           weight: 100
+    - family: pac
+      fonts: 
+        - asset: "assets/fonts/Pacifico-Regular.ttf"
+           
   #Roboto-LightItalic
   # For details regarding fonts from package dependencies,
   # see https://flutter.dev/to/font-from-package

@@ -6,9 +6,9 @@ import 'package:e_commerce/features/Auth/presentation/auth_widgets/custom_text.d
 import 'package:flutter/material.dart';
 
 import '../../../../core/constant/app_size.dart';
+import '../../../../core/widgets/logo_widget.dart';
 import '../auth_widgets/container_background.dart';
 import '../auth_widgets/custom_signin_form.dart';
-import '../auth_widgets/social_media_button.dart';
 
 // ignore: must_be_immutable
 class SignInScreen extends StatelessWidget {
@@ -21,7 +21,12 @@ class SignInScreen extends StatelessWidget {
         padding: EdgeInsets.symmetric(horizontal: Appsize.setWidth(width: 20)),
         child: Column(
           children: [
-            SizedBox(height: Appsize.setHeight(height: 160)),
+            SizedBox(height: Appsize.setHeight(height: 120)),
+
+            LogoWidget(),
+
+            SizedBox(height: Appsize.setHeight(height: 60)),
+
             //!card form
             ContainerOfSignScreens(
               child: buildwidget(context),
@@ -30,17 +35,17 @@ class SignInScreen extends StatelessWidget {
                 height:
                     Appsize.setHeight(height: Appsize.setHeight(height: 30))),
             //! social media
-            SocialMediaButton(
-              onpressed: () {},
-              image: AppString.facebook,
-              text: AppString.signInwithFacebook,
-            ),
-            SizedBox(height: Appsize.setHeight(height: 20)),
-            SocialMediaButton(
-              onpressed: () {},
-              image: AppString.google,
-              text: AppString.signInwithGoogle,
-            ),
+            // SocialMediaButton(
+            //   onpressed: () {},
+            //   image: AppString.facebook,
+            //   text: AppString.signInwithFacebook,
+            // ),
+            // SizedBox(height: Appsize.setHeight(height: 20)),
+            // SocialMediaButton(
+            //   onpressed: () {},
+            //   image: AppString.google,
+            //   text: AppString.signInwithGoogle,
+            // ),
           ],
         ),
       ),
