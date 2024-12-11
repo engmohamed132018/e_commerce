@@ -62,4 +62,12 @@ class AppString {
 
   //! const firebase  keys
   static const token = 'token';
+
+  //!profile const string
+  static const String editProfile = 'Edit Profile';
+  static const String shippingAddress = 'Shipping Address';
+  static const String orderHistory = 'Order History';
+  static const String cards = 'Cards';
+  static const String notifications = 'Notifications';
+  static const String logOut = 'Log Out';
 }

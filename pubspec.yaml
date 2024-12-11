@@ -29,6 +29,7 @@ environment:
 # versions available, run `flutter pub outdated`.
 dependencies:
   cloud_firestore: ^5.5.0
+  connectivity_plus: ^6.1.0
   cupertino_icons: ^1.0.8
   dio: ^5.7.0
   firebase_auth: ^5.3.3
@@ -42,6 +43,8 @@ dependencies:
     sdk: flutter
   get_it: ^8.0.2
   shared_preferences: ^2.3.3
+  # flutter_native_splash: ^2.4.3
+
 
 dev_dependencies:
   flutter_launcher_icons: "^0.14.2"
@@ -56,6 +59,10 @@ flutter_launcher_icons:
     image_path: "assets/images/logoName.png"
     background_color: "#hexcode"
     theme_color: "#hexcode"
+
+# flutter_native_splash:
+#   color: "#ffffff"
+#   image: assets/images/onboarding.png
  
 
 # For information on the generic Dart part of this file, see the

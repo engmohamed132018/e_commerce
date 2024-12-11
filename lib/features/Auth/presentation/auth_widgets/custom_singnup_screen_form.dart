@@ -10,7 +10,9 @@ import 'custome_textfield.dart';
 
 // ignore: must_be_immutable
 class CustomSignUpForm extends StatelessWidget {
-  CustomSignUpForm({super.key});
+  CustomSignUpForm({super.key, required this.positionAnimation});
+  final Animation<Offset> positionAnimation;
+
   GlobalKey<FormState> formKey = GlobalKey<FormState>();
   @override
   Widget build(BuildContext context) {
@@ -20,18 +22,22 @@ class CustomSignUpForm extends StatelessWidget {
           Navigator.pushReplacementNamed(context, AppString.signInScreenRoute);
         }
       },
-      child: SignUpForm(formKey: formKey, authCubit: context.read<AuthCubit>()),
+      child: SignUpForm(
+        formKey: formKey,
+        authCubit: context.read<AuthCubit>(),
+        positionAnimation: positionAnimation,
+      ),
     );
   }
 }
 
 class SignUpForm extends StatelessWidget {
-  const SignUpForm({
-    super.key,
-    required this.formKey,
-    required this.authCubit,
-  });
-
+  const SignUpForm(
+      {super.key,
+      required this.formKey,
+      required this.authCubit,
+      required this.positionAnimation});
+  final Animation<Offset> positionAnimation;
   final GlobalKey<FormState> formKey;
   final AuthCubit authCubit;
 
@@ -66,13 +72,16 @@ class SignUpForm extends StatelessWidget {
             SizedBox(
               height: Appsize.setHeight(height: 66),
             ),
-            CustomButton(
-                text: AppString.signUp,
-                onpressed: () async {
-                  if (formKey.currentState!.validate()) {
-                    await authCubit.createUserWithEmailAndPassword();
-                  }
-                }),
+            SlideTransition(
+              position: positionAnimation,
+              child: CustomButton(
+                  text: AppString.signUp,
+                  onpressed: () async {
+                    if (formKey.currentState!.validate()) {
+                      await authCubit.createUserWithEmailAndPassword();
+                    }
+                  }),
+            ),
           ],
         ));
   }

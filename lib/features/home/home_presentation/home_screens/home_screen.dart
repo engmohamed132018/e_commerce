@@ -4,7 +4,7 @@ import 'package:e_commerce/features/cart/presenation/screens/cartscreen.dart';
 import 'package:e_commerce/features/home/home_bloc/cubit/home_state.dart';
 import 'package:e_commerce/features/home/home_presentation/home_screens/home_explore_screen.dart';
 import 'package:e_commerce/features/home/home_presentation/home_widgets/home_nav_bar.dart';
-import 'package:firebase_auth/firebase_auth.dart';
+import 'package:e_commerce/features/profile/views/profile_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -21,13 +21,7 @@ class _HomeScreenState extends State<HomeScreen> {
   List<Widget> dataScreens = [
     const HomeExploreScreen(),
     const CartScreen(),
-    Center(
-      child: CustomButton(
-          text: 'sign OUT',
-          onpressed: () {
-            FirebaseAuth.instance.signOut();
-          }),
-    ),
+    const ProflileScreen(),
   ];
 
   @override

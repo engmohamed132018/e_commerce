@@ -8,8 +8,24 @@ import '../../../../core/constant/app_size.dart';
 import '../../../../core/widgets/logo_widget.dart';
 import '../auth_widgets/container_background.dart';
 
-class SignUpScreen extends StatelessWidget {
+class SignUpScreen extends StatefulWidget {
   const SignUpScreen({super.key});
+
+  @override
+  State<SignUpScreen> createState() => _SignUpScreenState();
+}
+
+class _SignUpScreenState extends State<SignUpScreen>
+    with SingleTickerProviderStateMixin {
+  late AnimationController animationController;
+  late Animation<Offset> animation;
+  late Animation<Offset> positionAnimation;
+
+  @override
+  void initState() {
+    super.initState();
+    initController();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -22,7 +38,7 @@ class SignUpScreen extends StatelessWidget {
             SizedBox(
               height: Appsize.setHeight(height: 120),
             ),
-            LogoWidget(),
+            SlideTransition(position: animation, child: LogoWidget()),
             SizedBox(
               height: Appsize.setHeight(height: 40),
             ),
@@ -43,11 +59,24 @@ class SignUpScreen extends StatelessWidget {
         SizedBox(
           height: Appsize.setHeight(height: 40),
         ),
-        CustomSignUpForm(),
+        CustomSignUpForm(
+          positionAnimation: positionAnimation,
+        ),
         SizedBox(
           height: Appsize.setHeight(height: 20),
         ),
       ],
     );
+  }
+
+  void initController() {
+    animationController =
+        AnimationController(vsync: this, duration: const Duration(seconds: 2));
+    animation = Tween<Offset>(begin: Offset(0, -1), end: Offset.zero).animate(
+        CurvedAnimation(parent: animationController, curve: Curves.bounceOut));
+    positionAnimation = Tween<Offset>(begin: Offset(2, 0), end: Offset.zero)
+        .animate(CurvedAnimation(
+            parent: animationController, curve: Curves.bounceInOut));
+    animationController.forward();
   }
 }

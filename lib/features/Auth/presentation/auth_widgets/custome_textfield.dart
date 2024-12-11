@@ -1,7 +1,5 @@
 import 'package:e_commerce/core/constant/app_color.dart';
-import 'package:e_commerce/core/constant/app_size.dart';
 import 'package:e_commerce/core/constant/app_style.dart';
-import 'package:e_commerce/features/Auth/presentation/auth_widgets/custom_text.dart';
 import 'package:flutter/material.dart';
 
 class CustomTextformField extends StatelessWidget {
@@ -31,12 +29,6 @@ class CustomTextformField extends StatelessWidget {
                 return null;
               }
             },
-            // CustomText(
-            //       text: text,
-            //       textStyle: AppStyle.normaLAND14SizeStyle
-            //           .copyWith(color: AppColor.greyColor),
-            //     ),
-            // onSaved: onsaved,
             decoration: InputDecoration(
               labelText: text,
               labelStyle: AppStyle.normaLAND14SizeStyle

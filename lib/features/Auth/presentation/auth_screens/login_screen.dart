@@ -11,8 +11,24 @@ import '../auth_widgets/container_background.dart';
 import '../auth_widgets/custom_signin_form.dart';
 
 // ignore: must_be_immutable
-class SignInScreen extends StatelessWidget {
+class SignInScreen extends StatefulWidget {
   const SignInScreen({super.key});
+
+  @override
+  State<SignInScreen> createState() => _SignInScreenState();
+}
+
+class _SignInScreenState extends State<SignInScreen>
+    with SingleTickerProviderStateMixin {
+  late AnimationController controller;
+  late Animation<Offset> animationSlidePostion;
+  late Animation<Offset> animation;
+  @override
+  void initState() {
+    initController();
+    super.initState();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -23,13 +39,20 @@ class SignInScreen extends StatelessWidget {
           children: [
             SizedBox(height: Appsize.setHeight(height: 120)),
 
-            LogoWidget(),
+            SlideTransition(
+              position: animation,
+              child: LogoWidget(),
+            ),
 
             SizedBox(height: Appsize.setHeight(height: 60)),
 
             //!card form
-            ContainerOfSignScreens(
-              child: buildwidget(context),
+            FadeTransition(
+              opacity: controller,
+              child: ContainerOfSignScreens(
+                child: SlideTransition(
+                    position: animation, child: buildwidget(context)),
+              ),
             ),
             SizedBox(
                 height:
@@ -91,5 +114,17 @@ class SignInScreen extends StatelessWidget {
           style: AppStyle.normaLAND18SizeStyle
               .copyWith(color: AppColor.greenColor),
         ));
+  }
+
+  void initController() {
+    controller =
+        AnimationController(vsync: this, duration: const Duration(seconds: 3));
+    animationSlidePostion =
+        Tween<Offset>(begin: Offset(-1, -1), end: Offset.zero).animate(
+            CurvedAnimation(parent: controller, curve: Curves.bounceInOut));
+    animation = Tween<Offset>(begin: Offset(0, -3), end: Offset.zero)
+        .animate(CurvedAnimation(parent: controller, curve: Curves.bounceOut));
+
+    controller.forward();
   }
 }
